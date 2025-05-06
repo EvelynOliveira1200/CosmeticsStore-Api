@@ -10,18 +10,18 @@ const getCategoryById = async (id) => {
     return result.rows[0];
   };
 
-const createCategory = async (nome, description) => {  
+const createCategory = async (name, description) => {  
     const result = await pool.query(
-      `INSERT INTO categorys (nome, description) VALUES ($1, $2) RETURNING *`,
-      [nome, description]
+      `INSERT INTO categorys (name, description) VALUES ($1, $2) RETURNING *`,
+      [name, description]
     );
     return result.rows[0];
 };
 
-const updateCategory = async (id, nome, description) => {
+const updateCategory = async (id, name, description) => {
     const result = await pool.query(
-      `UPDATE categorys SET nome = $1, description = $2 WHERE id = $3 RETURNING *`,
-      [nome, description, id]
+      `UPDATE categorys SET name = $1, description = $2 WHERE id = $3 RETURNING *`,
+      [name, description, id]
     );
     return result.rows[0];
   };

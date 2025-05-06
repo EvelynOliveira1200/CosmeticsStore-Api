@@ -23,13 +23,13 @@ const getCategoryById = async (req, res) => {
 
 const createCategory = async (req, res) => {
   try {
-    const { nome, description } = req.body;
-    if (!nome || !description) {
+    const { name, description } = req.body;
+    if (!name || !description) {
       return res
         .status(400)
-        .json({ message: "Nome e descrição são campos obrigatórios." });
+        .json({ message: "name e descrição são campos obrigatórios." });
     }
-    const newCategory = await categoryModel.createCategory(nome, description);
+    const newCategory = await categoryModel.createCategory(name, description);
     res
       .status(201)
       .json({
@@ -43,10 +43,10 @@ const createCategory = async (req, res) => {
 
 const updateCategory = async (req, res) => {
   try {
-    const { nome, description } = req.body;
+    const { name, description } = req.body;
     const updatedCategory = await categoryModel.updateCategory(
       req.params.id,
-      nome,
+      name,
       description
     );
 
