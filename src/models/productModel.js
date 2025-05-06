@@ -29,6 +29,29 @@ const createProduct = async (category_id, name, price_product, photo) => {
   return result.rows[0];
 };
 
+const updateProduct = async (id, name, price_product) => {
+  const result = await pool.query(
+    `UPDATE products 
+     SET name = $1, 
+     price_product = $2  
+     WHERE id = $3 RETURNING *`,
+    [name, price_product, id]
+  );
+  return result.rows[0];
+};
 
+const deleteProduct  = async (id) => {
+  const result = await pool.query(
+    `DELETE FROM products 
+     WHERE id = $1 RETURNING *`,
+    [id]
+  );
 
-module.exports = { getAllProducts, getProductById };
+  if (result.rowCount === 0) {
+    return { error: "Product not found" };
+  }
+
+  return { message: "Produto deletado com sucesso" };
+};
+
+module.exports = { getAllProducts, getProductById, createProduct, updateProduct, deleteProduct };

@@ -17,9 +17,22 @@ CREATE TABLE products (
 );
 
 INSERT INTO categorys (name, description) VALUES 
-('Maquiagem', 'Produtos de Maquiagem');
+('Limpeza facial', 'sabonetes, loções, géis de limpeza.'),
+('Hidratantes', 'cremes, loções, óleos.'),
+('Protetores solares', 'cremes, loções, sprays.'),
+('Tratamentos específicos', 'produtos para acne, rugas, celulite, etc.'),
+('Esfoliantes', 'produtos para remover células mortas da pele.'),
+('Tônicos', 'produtos para equilibrar o pH da pele.'),
+('Séruns', 'produtos com ingredientes concentrados para tratamentos específicos.'),
+('Maquiagem', 'para realçar a beleza das mulheres'),
+('Shampus', 'para limpar os cabelos.'),
+('Condicionadores', 'para hidratar e desembaraçar os cabelos.'),
+('Máscaras', 'para tratamento intensivo dos cabelos.'),
+('Óleos capilares', 'para hidratar e proteger as pontas.'),
+('Produtos para penteados', 'géis, mousses, sprays.'),
+('Tinturas e descolorantes', 'para mudar a cor dos cabelos.'),
+('Sabonetes', 'para limpar o corpo e as mãos.'),
+('Desodorantes', 'para controlar o odor corporal.'),
+('Cuidados com as unhas', 'esmaltes, removedores, fortalecedores.'),
+('Acessórios', 'pincéis, esponjas, aplicadores.');
 
-INSERT INTO products (category_id, name, photo, price_product) VALUES
-(1, 'Make', 'https://testeteste', 2.3),
-(1, 'Lipstick', 'https://example.com/lipstick', 5.5),
-(1, 'Eyeliner', 'https://example.com/eyeliner', 3.8);
