@@ -6,6 +6,6 @@ const reportController = require("../controllers/reportController");
 router.get("/report/categorys/pdf", reportController.exportCategoryPDF);
 
 // Rota para gerar PDF de cosméticos
-//router.get("/report/products/pdf", reportController.exportCosmeticsPDF);
+router.get("/report/products/pdf", reportController.exportProductPDF);
 
 module.exports = router;

@@ -17,7 +17,7 @@ const exportCategoryPDF = async (req, res) => {
       doc.moveDown(1);
   
       // Cabeçalho
-      doc.fontSize(14).fillColor("black").text("ID | Nome da Categoria | Descrição", {
+      doc.fontSize(14).fillColor("black").text("Id | Nome da Categoria | Descrição", {
         underline: true,
       });
       doc.moveDown(0.5);
@@ -39,9 +39,60 @@ const exportCategoryPDF = async (req, res) => {
   
       doc.end();
     } catch (error) {
-      console.error("Erro ao gerar o PDF de marcas:", error);
-      res.status(500).json({ message: "Erro ao gerar o PDF de marcas" });
+      console.error("Erro ao gerar o PDF de categoria:", error);
+      res.status(500).json({ message: "Erro ao gerar o PDF de categoria" });
     }
   };
 
-  module.exports = {exportCategoryPDF}
+  const exportProductPDF = async (req, res) => {
+    try {
+        const products = await productModel.getAllProducts();
+        console.log(products); // Verifique os dados retornados
+
+        res.setHeader("Content-Type", "application/pdf");
+        res.setHeader("Content-Disposition", "attachment; filename=produtos.pdf");
+
+        const doc = new PDFDocument({ margin: 50 });
+        doc.pipe(res);
+
+        // Título
+        doc
+            .fontSize(20)
+            .text("Relatório de Produtos", { align: "center", underline: true });
+        doc.moveDown(1);
+
+        // Cabeçalho
+        doc.fontSize(12).fillColor("black").text(
+            "Id | Nome | Preço | Foto | Categoria",
+            { underline: true }
+        );
+        doc.moveDown(0.5);
+
+        // Conteúdo com linhas alternadas
+        let isAlternate = false;
+        products.forEach((product) => {
+            if (isAlternate) {
+                doc.fillColor("#f0f0f0").rect(50, doc.y, 500, 15).fill();
+            }
+
+            const preco = `R$ ${parseFloat(product.price_product).toFixed(2).replace(".", ",")}`;
+
+            doc
+                .fillColor("black")
+                .text(
+                    `${product.id} | ${product.name} | ${preco} | ${product.photo || "N/A"} | ${product.category_name || "N/A"}`
+                );
+            doc.moveDown(0.5);
+            isAlternate = !isAlternate;
+        });
+
+        doc.end();
+    } catch (error) {
+        console.error("Erro ao gerar o PDF de produtos:", error.message, error.stack);
+        res.status(500).json({ message: "Erro ao gerar o PDF de produtos" });
+    }
+};
+  
+
+  module.exports = {exportCategoryPDF, exportProductPDF}
+  
