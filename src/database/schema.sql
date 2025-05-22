@@ -22,8 +22,9 @@ INSERT INTO categorys (name, description) VALUES
 ('Produtos para hidratação', 'Cremes e loções hidratantes.'),
 ('Produtos para limpeza facial', 'Sabonetes, loções e géis de limpeza.'),
 ('Protetores solares', 'Cremes e sprays para proteção solar.'),
-('Produtos para unhas', 'Esmaltes e fortalecedores.'),
-('Sabonetes e desodorantes', 'Higiene pessoal e controle de odor.'),
-('Séruns e tratamentos', 'Produtos concentrados para cuidados específicos.');
-
+('Perfumes e fragrâncias', 'Colônias, perfumes e águas de cheiro.'),
+('Séruns e tratamentos', 'Produtos concentrados para cuidados específicos.'),
+('Cosméticos naturais', 'Produtos com ingredientes orgânicos e naturais.'),
+('Kits e presentes', 'Conjuntos de produtos para presentear.'),
+('Acessórios de beleza', 'Pincéis, esponjas, espelhos e organizadores.');
 
